@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rWb-Kl-XX7">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Thematic Collection View Controller-->
+        <scene sceneID="X0U-o3-Kki">
+            <objects>
+                <collectionViewController id="rWb-Kl-XX7" customClass="ThematicCollectionViewController" customModule="GamingNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Fo6-7M-L3p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aVi-f9-bJq">
+                            <size key="itemSize" width="192" height="192"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ThematicCollectionCell" id="tv6-jK-JXn" customClass="ThematicCollectionCell" customModule="GamingNews" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="192" height="192"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9IB-gn-6ft">
+                                    <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5F9-ur-gEi">
+                                            <rect key="frame" x="8" y="8" width="176" height="176"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5F9-ur-gEi" firstAttribute="top" secondItem="9IB-gn-6ft" secondAttribute="top" constant="8" id="1iF-16-X7h"/>
+                                        <constraint firstItem="5F9-ur-gEi" firstAttribute="leading" secondItem="9IB-gn-6ft" secondAttribute="leading" constant="8" id="hgQ-ts-kKd"/>
+                                        <constraint firstAttribute="trailing" secondItem="5F9-ur-gEi" secondAttribute="trailing" constant="8" id="iVx-sw-T0I"/>
+                                        <constraint firstAttribute="bottom" secondItem="5F9-ur-gEi" secondAttribute="bottom" constant="8" id="sTT-vy-WmY"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="customSize" width="192" height="192"/>
+                                <connections>
+                                    <outlet property="imageCell" destination="5F9-ur-gEi" id="vTA-Zl-hUR"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="rWb-Kl-XX7" id="ECn-fy-AIW"/>
+                            <outlet property="delegate" destination="rWb-Kl-XX7" id="bYV-cO-Eyl"/>
+                        </connections>
+                    </collectionView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="e8i-nx-b47" kind="show" identifier="showRSSFeed" id="ihL-hU-U69"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hd7-El-Zcw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="183" y="40"/>
+        </scene>
+        <!--RSSFeedStoryboard-->
+        <scene sceneID="yHE-Iq-ar1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RSSFeedStoryboard" id="e8i-nx-b47" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MHb-eZ-8dQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nj5-U3-YWm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1118" y="37"/>
+        </scene>
+    </scenes>
+</document>
