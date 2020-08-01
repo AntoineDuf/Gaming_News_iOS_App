@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireRSSParser
 
 public enum NetworkRequestError: Error {
     case noData
@@ -16,29 +17,27 @@ public enum NetworkRequestError: Error {
 }
 
 public protocol NetworkRequest {
-    func get<DataType: Decodable>(
+    
+    func get(
         _ url: URL,
-        completion: @escaping (Result<DataType, Error>) -> Void
+        completion: @escaping ([RSSItem]) -> Void
     )
 }
 
-class AlamofireNetworkRequest: NetworkRequest {
+final class AlamofireNetworkRequest: NetworkRequest {
     /// request service
-    func get<RecipeData: Decodable>(
+    func get(
         _ url: URL,
-        completion: @escaping (Result<RecipeData, Error>) -> Void
+        completion: @escaping ([RSSItem]) -> Void
     ) {
-        Alamofire.AF.request(
-            url
-        ).responseJSON { responseData in
-            guard let data = responseData.data,
-                responseData.response?.statusCode == 200,
-                let responseJSON = try? JSONDecoder().decode(RecipeData.self, from: data)
-                else {
-                    completion(.failure(NetworkRequestError.incorrectResponse))
-                    return
+        AF.request(url).responseRSS() { (response) -> Void in
+            guard let feed: RSSFeed = response.value else {
+                print("erreur")
+                return
             }
-            completion(.success(responseJSON))
+            let feeds = feed.items
+            completion(feeds)
         }
     }
 }
+
