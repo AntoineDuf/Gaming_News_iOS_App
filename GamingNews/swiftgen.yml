@@ -1,0 +1,19 @@
+ib:
+  inputs: GamingNews
+  outputs:
+   - templateName: scenes-swift4
+     output: GamingNews/SwiftGen/StoryboardScenes.swift
+   - templateName: segues-swift4
+     output: GamingNews/SwiftGen/StoryboardSegues.swift
+strings:
+  inputs: GamingNews/Base.lproj
+  filter: .+\.strings$
+  outputs:
+    - templateName: structured-swift4
+      output: GamingNews/SwiftGen/strings.swift
+xcassets:
+  inputs:
+    - GamingNews/Assets.xcassets
+  outputs:
+    - templateName: swift4
+      output: GamingNews/SwiftGen/assets-images.swift
