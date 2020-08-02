@@ -24,7 +24,7 @@ extension ThematicCollectionViewController {
     // MARK: - Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let RSSFeedVC = segue.destination as? RSSFeedViewController {
-            RSSFeedVC.viewModel = RSSFeedViewModel()
+            RSSFeedVC.viewModel = RSSFeedViewModel(articles: viewModel.articles)
         }
     }
 }
@@ -55,7 +55,7 @@ extension ThematicCollectionViewController {
 
 extension ThematicCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showRSSFeed", sender: nil)
+        viewModel.getRSSLinks()
     }
 }
 
@@ -65,6 +65,12 @@ private extension ThematicCollectionViewController {
             guard let me = self else { return }
             DispatchQueue.main.async {
                 me.collectionView.reloadData()
+            }
+        }
+        viewModel.articlesHandler = { [weak self] in
+            guard let me = self else { return }
+            DispatchQueue.main.async {
+                me.performSegue(withIdentifier: "showRSSFeed", sender: nil)
             }
         }
     }
