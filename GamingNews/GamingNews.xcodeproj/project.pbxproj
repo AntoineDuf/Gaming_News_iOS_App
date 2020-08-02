@@ -17,6 +17,7 @@
 		8B14A11724D5648B00B49275 /* StoryboardSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14A11324D5648B00B49275 /* StoryboardSegues.swift */; };
 		8B14A11824D5648B00B49275 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14A11424D5648B00B49275 /* strings.swift */; };
 		8B14A11A24D5655200B49275 /* localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B14A11924D5655200B49275 /* localizable.strings */; };
+		8B14A11C24D5ACBD00B49275 /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14A11B24D5ACBD00B49275 /* Sources.swift */; };
 		8B57CFDD24CC18FB003D8789 /* Thematic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57CFDC24CC18FB003D8789 /* Thematic.swift */; };
 		8B57CFE024CC1CDE003D8789 /* ThematicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57CFDF24CC1CDE003D8789 /* ThematicViewModel.swift */; };
 		8B57CFE624CC22BE003D8789 /* ThematicCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B57CFE524CC22BE003D8789 /* ThematicCollectionCell.swift */; };
@@ -57,6 +58,7 @@
 		8B14A11324D5648B00B49275 /* StoryboardSegues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegues.swift; sourceTree = "<group>"; };
 		8B14A11424D5648B00B49275 /* strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		8B14A11924D5655200B49275 /* localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = localizable.strings; sourceTree = "<group>"; };
+		8B14A11B24D5ACBD00B49275 /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
 		8B57CFDC24CC18FB003D8789 /* Thematic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thematic.swift; sourceTree = "<group>"; };
 		8B57CFDF24CC1CDE003D8789 /* ThematicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThematicViewModel.swift; sourceTree = "<group>"; };
 		8B57CFE524CC22BE003D8789 /* ThematicCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThematicCollectionCell.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				8B14A10624D55BBD00B49275 /* RSSFeedInterface */,
 				8BF7C84524ADF1210080D9C6 /* SceneDelegate.swift */,
 				8B57CFDC24CC18FB003D8789 /* Thematic.swift */,
+				8B14A11B24D5ACBD00B49275 /* Sources.swift */,
 				8BF7C84C24ADF1240080D9C6 /* Assets.xcassets */,
 				8BF7C84E24ADF1240080D9C6 /* LaunchScreen.storyboard */,
 				8BF7C85124ADF1240080D9C6 /* Info.plist */,
@@ -417,6 +420,7 @@
 				8B14A11624D5648B00B49275 /* StoryboardScenes.swift in Sources */,
 				8B14A11524D5648B00B49275 /* assets-images.swift in Sources */,
 				8B14A10824D55BF900B49275 /* RSSFeedViewController.swift in Sources */,
+				8B14A11C24D5ACBD00B49275 /* Sources.swift in Sources */,
 				8B14A10C24D55C3300B49275 /* ArticleTableViewCell.swift in Sources */,
 				8BF7C84824ADF1210080D9C6 /* ThematicCollectionViewController.swift in Sources */,
 				8B14A10A24D55C0B00B49275 /* RSSFeedViewModel.swift in Sources */,
