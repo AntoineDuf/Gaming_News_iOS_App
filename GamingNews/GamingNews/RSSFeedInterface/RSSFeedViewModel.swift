@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import AlamofireRSSParser
 
 class RSSFeedViewModel {
+    var articles: [RSSItem]
     
+    init(articles: [RSSItem]) {
+        self.articles = articles
+    }
 }
