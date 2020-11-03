@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  GamingNews
+
+  Created by Antoine Dufayet on 10/08/2020.
+  Copyright © 2020 NatProd. All rights reserved.
+*/
+
+"thematicsDB" = "thematics";
+"sourcesDB" = "sources";
+"errorGetRSSLink" = "error RSS Link";
+"errorDecodeRSSArticles" = "error decode RSS articles";
+"thematicsAttribute" = "thematics_id";
+"IDAttribute" = "id";
+"nameAttribute" = "name";
+"imageNameAttribute" = "image_name";
+"RSSAttribute" = "rss_link";
+"errorAttribute" = "attribute not found";
+// mettre ça dans un fichier configue var .swift
