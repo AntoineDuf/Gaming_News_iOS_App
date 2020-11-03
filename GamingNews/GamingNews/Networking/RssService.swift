@@ -5,6 +5,7 @@
 //  Created by Antoine Dufayet on 02/07/2020.
 //  Copyright © 2020 NatProd. All rights reserved.
 //
+//swiftlint:disable empty_parentheses_with_trailing_closure
 
 import Foundation
 import Alamofire
@@ -17,7 +18,6 @@ public enum NetworkRequestError: Error {
 }
 
 public protocol NetworkRequest {
-    
     func get(
         _ url: URL,
         completion: @escaping ([RSSItem]) -> Void
@@ -32,7 +32,7 @@ final class AlamofireNetworkRequest: NetworkRequest {
     ) {
         AF.request(url).responseRSS() { (response) -> Void in
             guard let feed: RSSFeed = response.value else {
-                print("erreur")
+                print(L10n.errorDecodeRSSArticles)
                 return
             }
             let feeds = feed.items
@@ -40,4 +40,3 @@ final class AlamofireNetworkRequest: NetworkRequest {
         }
     }
 }
-
