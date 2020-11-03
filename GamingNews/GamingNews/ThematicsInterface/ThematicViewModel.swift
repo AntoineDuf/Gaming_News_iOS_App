@@ -8,68 +8,31 @@
 
 import Foundation
 import FirebaseFirestore
-import AlamofireRSSParser
 
 class ThematicViewModel {
     var thematics: [Thematic] = []
-    var sources: [Sources] = []
-    var articles: [RSSItem] = []
+    var thematic: Thematic?
     var thematicHandler: () -> Void = {}
-    var articlesHandler: () -> Void = {}
-    private var thematicsCollection: CollectionReference = Firestore.firestore().collection("thematics")
-    private var sourcesCollection: CollectionReference = Firestore.firestore().collection("sources")
-    private var rssRequest = AlamofireNetworkRequest()
-    
+    var thematiqueID: Int = 0
+    private let thematicsCollection: CollectionReference = Firestore.firestore().collection(L10n.thematicsDB)
+
     func getThematics() {
         thematicsCollection.getDocuments { (snapshot, error) in
-            if let err = error {
-                debugPrint("error fetching docs: \(err)")
+            if let error = error {
+                debugPrint("\(error)")
             } else {
                 guard let snap = snapshot else { return }
                 for document in snap.documents {
                     let data = document.data()
-                    let identifier = data["id"] as? Int ?? 0
-                    let name = data["name"] as? String ?? "unknow"
+                    let identifier = data[L10n.idAttribute] as? Int ?? 0
+                    let imageName = data["image_name"] as? String ?? L10n.errorAttribute
+                    let name = data[L10n.nameAttribute] as? String ?? L10n.errorAttribute
                     let documentId = document.documentID
-                    
-                    let newThematic = Thematic(id: identifier, name: name, documentId: documentId)
-                    
+                    let newThematic = Thematic(id: identifier, imageName: imageName, name: name, documentId: documentId)
                     self.thematics.append(newThematic)
                 }
                 self.thematicHandler()
             }
         }
     }
-
-    func getRSSLinks() {
-        sourcesCollection.whereField("thematics_id", isEqualTo: 1).getDocuments { (snapshot, error) in
-            if let err = error {
-                debugPrint("error fetching docs: \(err)")
-            } else {
-                guard let snap = snapshot else { return }
-                for document in snap.documents {
-                    let data = document.data()
-                    let rssSources = data["rss_link"] as? String ?? "unknow"
-                    let thematic_id = data["thematics_id"] as? Int ?? 0
-                    let documentId = document.documentID
-                    
-                    let newSource = Sources(rss_link: rssSources, thematics_id: thematic_id, documentId: documentId)
-                    
-                    self.sources.append(newSource)
-                }
-                self.getRSSArticles()
-            }
-        }
-    }
-
-    func getRSSArticles() {
-        rssRequest.get(URL(string: sources[0].rss_link)!) { (response) in
-            for item in response {
-                self.articles.append(item)
-                self.articlesHandler()
-            }
-        }
-    }
 }
-
-
