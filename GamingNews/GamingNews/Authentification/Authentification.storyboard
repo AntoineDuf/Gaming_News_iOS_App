@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0cM-lB-UUc">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Authentification View Controller-->
+        <scene sceneID="d2K-eB-i6Z">
+            <objects>
+                <viewController storyboardIdentifier="AuthentificationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0cM-lB-UUc" customClass="AuthentificationViewController" customModule="GamingNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8wn-Oi-N8y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xYL-Ou-PuR">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GeM-Dv-ohg">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="409"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="om7-xS-Kvf">
+                                        <rect key="frame" x="0.0" y="409" width="374" height="409"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlu-7F-z5b">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="204.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mx9-m0-h5h" customClass="GIDSignInButton">
+                                                <rect key="frame" x="0.0" y="204.5" width="374" height="204.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xYL-Ou-PuR" firstAttribute="leading" secondItem="BPO-Py-x96" secondAttribute="leading" constant="20" id="E7K-Nb-QXJ"/>
+                            <constraint firstItem="BPO-Py-x96" firstAttribute="trailing" secondItem="xYL-Ou-PuR" secondAttribute="trailing" constant="20" id="Io1-FF-bEc"/>
+                            <constraint firstItem="xYL-Ou-PuR" firstAttribute="bottom" secondItem="BPO-Py-x96" secondAttribute="bottom" id="Nif-gU-N43"/>
+                            <constraint firstItem="xYL-Ou-PuR" firstAttribute="top" secondItem="BPO-Py-x96" secondAttribute="top" id="yau-yR-Ss1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BPO-Py-x96"/>
+                    </view>
+                    <connections>
+                        <outlet property="faceBookSignInView" destination="rlu-7F-z5b" id="xoO-or-9dm"/>
+                        <outlet property="googleSignInButton" destination="Mx9-m0-h5h" id="JNI-cV-o2c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RHj-bv-j1K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="202.89855072463769" y="103.79464285714285"/>
+        </scene>
+    </scenes>
+</document>
