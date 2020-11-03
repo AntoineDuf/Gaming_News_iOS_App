@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rWb-Kl-XX7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JjJ-ZI-oNh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Thematic Collection View Controller-->
+        <!--Catégories-->
+        <scene sceneID="6uv-oi-IJk">
+            <objects>
+                <navigationController storyboardIdentifier="ThematicTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JjJ-ZI-oNh" customClass="ThematicTabBarController" customModule="GamingNews" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Catégories" image="Categories" id="eQh-c0-jwy"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="D6V-20-R4G">
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rWb-Kl-XX7" kind="relationship" relationship="rootViewController" id="Xxk-IL-j6R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kKG-ey-RSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-716" y="40"/>
+        </scene>
+        <!--Catégories-->
         <scene sceneID="X0U-o3-Kki">
             <objects>
-                <collectionViewController id="rWb-Kl-XX7" customClass="ThematicCollectionViewController" customModule="GamingNews" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ThematicCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rWb-Kl-XX7" customClass="ThematicCollectionViewController" customModule="GamingNews" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Fo6-7M-L3p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,8 +71,9 @@
                             <outlet property="delegate" destination="rWb-Kl-XX7" id="bYV-cO-Eyl"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Catégories" largeTitleDisplayMode="always" id="4iW-HQ-Kty"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="e8i-nx-b47" kind="show" identifier="showRSSFeed" id="ihL-hU-U69"/>
                     </connections>
@@ -74,4 +93,7 @@
             <point key="canvasLocation" x="1118" y="37"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Categories" width="24" height="24"/>
+    </resources>
 </document>
