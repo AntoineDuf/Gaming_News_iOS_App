@@ -9,14 +9,15 @@
 import Foundation
 
 struct Sources {
-    let rss_link: String
-    let thematics_id: Int
+    let rssLink: String
+    let thematicsId: Int
     let documentId: String
-    
-    init(rss_link: String, thematics_id: Int, documentId: String) {
-        self.rss_link = rss_link
-        self.thematics_id = thematics_id
+    let name: String
+
+    init(rssLink: String, thematicsId: Int, documentId: String, name: String) {
+        self.rssLink = rssLink
+        self.thematicsId = thematicsId
         self.documentId = documentId
+        self.name = name
     }
 }
-
