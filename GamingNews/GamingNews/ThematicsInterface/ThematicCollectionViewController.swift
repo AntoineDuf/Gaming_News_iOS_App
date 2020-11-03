@@ -5,12 +5,13 @@
 //  Created by Antoine Dufayet on 02/07/2020.
 //  Copyright © 2020 NatProd. All rights reserved.
 //
+//swiftlint:disable identifier_name
 
 import UIKit
 
 final class ThematicCollectionViewController: UICollectionViewController {
-    
-    private var viewModel = ThematicViewModel()
+
+    private let viewModel = ThematicViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +22,9 @@ final class ThematicCollectionViewController: UICollectionViewController {
 }
 
 extension ThematicCollectionViewController {
-    // MARK: - Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let RSSFeedVC = segue.destination as? RSSFeedViewController {
-            RSSFeedVC.viewModel = RSSFeedViewModel(articles: viewModel.articles)
+            RSSFeedVC.viewModel = RSSFeedViewModel(thematiqueID: viewModel.thematiqueID, thematic: viewModel.thematic!)
         }
     }
 }
@@ -37,7 +37,7 @@ extension ThematicCollectionViewController {
         print(viewModel.thematics.count)
         return viewModel.thematics.count
     }
-    
+
     override func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
@@ -46,7 +46,6 @@ extension ThematicCollectionViewController {
             withReuseIdentifier: "\(ThematicCollectionCell.self)",
             for: indexPath
             ) as? ThematicCollectionCell else { fatalError() }
-        
         let thematic = viewModel.thematics[indexPath.row]
         cell.configureCell(thematic: thematic)
         return cell
@@ -55,7 +54,9 @@ extension ThematicCollectionViewController {
 
 extension ThematicCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.getRSSLinks()
+        viewModel.thematiqueID = indexPath.row
+        viewModel.thematic = viewModel.thematics[indexPath.row]
+        performSegue(withIdentifier: StoryboardSegue.Thematic.showRSSFeed.rawValue, sender: nil)
     }
 }
 
@@ -67,16 +68,10 @@ private extension ThematicCollectionViewController {
                 me.collectionView.reloadData()
             }
         }
-        viewModel.articlesHandler = { [weak self] in
-            guard let me = self else { return }
-            DispatchQueue.main.async {
-                me.performSegue(withIdentifier: "showRSSFeed", sender: nil)
-            }
-        }
     }
 }
 
-    // MARK: - Extension allowing to configure cell design.
+// MARK: - Extension allowing to configure cell design.
 private extension ThematicCollectionViewController {
     func configureCellSize() {
         let width = (view.frame.width - 40) / 3
