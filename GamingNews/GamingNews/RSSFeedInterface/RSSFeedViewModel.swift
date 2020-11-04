@@ -71,7 +71,7 @@ class RSSFeedViewModel {
                 }
                 self.articles = self.articles.sorted(by: {
                     $0.pubDate!.compare($1.pubDate!) == .orderedDescending
-                }).unique
+                })
                 self.articlesHandler()
             }
         }

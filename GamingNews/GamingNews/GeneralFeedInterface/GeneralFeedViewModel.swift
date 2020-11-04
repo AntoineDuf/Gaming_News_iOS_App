@@ -11,7 +11,7 @@ import FirebaseFirestore
 import AlamofireRSSParser
 
 class GeneralFeedViewModel {
-    
+
     private var thematiqueID = [Int?]()
     private var sources: [Sources] = []
     var articles: [RSSItem] = []
@@ -20,18 +20,18 @@ class GeneralFeedViewModel {
     private var rssRequest = AlamofireNetworkRequest()
     var articlesHandler: () -> Void = {}
     var articleHandler: () -> Void = {}
-    
+
     func didSelectArticle(at indexPath: IndexPath) {
         let index = indexPath.row
         self.selectedArticle = articles[index]
         articleHandler()
     }
-    
+
     func getThematicIDs() {
         thematiqueID = [0, 1, 2]
         getRSSLinks()
     }
-    
+
     private func getRSSLinks() {
         let myGroup = DispatchGroup()
         for thematic in self.thematiqueID {
@@ -66,7 +66,7 @@ class GeneralFeedViewModel {
             self.getRSSArticles()
         }
     }
-    
+
     private func getRSSArticles() {
         let myGroup = DispatchGroup()
         for source in sources {
