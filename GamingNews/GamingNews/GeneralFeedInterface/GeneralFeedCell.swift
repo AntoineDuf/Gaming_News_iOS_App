@@ -40,14 +40,17 @@ class GeneralFeedCell: UITableViewCell {
         calendar.timeZone = NSTimeZone.system
         if let startDate = article.pubDate {
             let components = calendar.dateComponents(
-                [ .hour, .day ],
+                [ .hour, .day, .minute ],
                 from: startDate,
                 to: NSDate() as Date
             )
             if let hour = components.hour,
-                let day = components.day {
+                let day = components.day,
+                let minute = components.minute {
                 if day > 0 {
                     timeLabel.text = "\(String(describing: day)) jour(s)"
+                } else if minute < 60 && hour < 1 {
+                    timeLabel.text = "\(String(describing: minute)) minute(s)"
                 } else {
                     timeLabel.text = "\(String(describing: hour)) heure(s)"
                 }
