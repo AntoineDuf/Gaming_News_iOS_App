@@ -10,7 +10,7 @@ import Foundation
 import AlamofireRSSParser
 
 class WebViewModel {
-    private var article: RSSItem
+    var article: RSSItem
     var request: URLRequest?
 
     func getUrl() {
