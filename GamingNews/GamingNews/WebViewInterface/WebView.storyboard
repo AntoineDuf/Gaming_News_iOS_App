@@ -43,7 +43,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem enabled="NO" systemItem="flexibleSpace" id="F4C-0H-gxa"/>
-                                    <barButtonItem systemItem="action" id="4Ia-q6-ZBB"/>
+                                    <barButtonItem systemItem="action" id="4Ia-q6-ZBB">
+                                        <connections>
+                                            <action selector="shareButton:" destination="mc2-77-2AX" id="Ign-Xh-eXD"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
