@@ -17,7 +17,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var articleImage: UIImageView!
     @IBOutlet weak var imageStackView: UIView!
-    
+
     func configureCell(article: RSSItem, thematic: Thematic) {
         articleImage.layer.cornerRadius = 8
         label.text = article.title
@@ -49,7 +49,7 @@ class ArticleTableViewCell: UITableViewCell {
                 } else if minute < 60 && hour < 1 {
                     timeLabel.text = "Il y a \(String(describing: minute)) minute(s)"
                     } else {
-                        timeLabel.text = "Il y a \(String(describing: hour)) heure(s) & \(String(describing: minute)) minute(s)"
+                        timeLabel.text = "Il y a \(String(hour)) heure(s) & \(String(minute)) minute(s)"
                 }
             }
         }
