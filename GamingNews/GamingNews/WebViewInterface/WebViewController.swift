@@ -29,4 +29,10 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     @IBAction func refreshButton(_ sender: Any) {
         webView.reload()
     }
+    @IBAction func shareButton(_ sender: Any) {
+        guard let linkURL = viewModel.article.link else { return }
+        let items = [URL(string: linkURL)]
+        let activityGridView = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
+           present(activityGridView, animated: true)
+    }
 }
