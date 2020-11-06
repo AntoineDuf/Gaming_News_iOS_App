@@ -44,8 +44,16 @@ extension GeneralFeedTableViewController {
 }
 
 extension GeneralFeedTableViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.tablesViewSection.count
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        viewModel.tablesViewSection[section].headerTitle
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.articles.count
+        viewModel.tablesViewSection[section].items.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +61,8 @@ extension GeneralFeedTableViewController {
             withIdentifier: "\(GeneralFeedCell.self)",
             for: indexPath
             ) as? GeneralFeedCell else { fatalError() }
-        let article = viewModel.articles[indexPath.row]
+//        let article = viewModel.articles[indexPath.row]
+        let article = viewModel.tablesViewSection[indexPath.section].items[indexPath.row]
         cell.configureCell(article: article)
         return cell
     }
