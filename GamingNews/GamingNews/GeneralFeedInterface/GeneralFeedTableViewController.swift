@@ -15,6 +15,7 @@ class GeneralFeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewModel()
+        configurePullToRefresh()
         viewModel.getThematicIDs()
     }
 }
@@ -28,6 +29,7 @@ private extension GeneralFeedTableViewController {
         viewModel.articlesHandler = { [weak self] in
             guard let me = self else { return }
             me.tableView.reloadData()
+            me.refreshControl?.endRefreshing()
         }
     }
 }
@@ -63,6 +65,22 @@ extension GeneralFeedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (view.frame.height / 6)
+        return 80
+    }
+}
+
+private extension GeneralFeedTableViewController {
+    func configurePullToRefresh() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(
+            self,
+            action: #selector(refreshArticles),
+            for: .valueChanged
+        )
+        self.refreshControl = refreshControl
+    }
+
+    @objc func refreshArticles() {
+        viewModel.getThematicIDs()
     }
 }
