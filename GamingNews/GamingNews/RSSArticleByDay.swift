@@ -9,20 +9,17 @@
 import Foundation
 import AlamofireRSSParser
 
-struct TableViewSection {
-
+struct RSSArticleByDay {
     let order: Int
-    var items: [RSSItem]
-    let headerTitle: String?
+    var items = [RSSItem]()
+    let headerTitle: String
 //    let headerHeight: CGFloat
 //    let footerHeight: CGFloat
     init(
-        order: Int = 0,
-        items: [RSSItem],
-        headerTitle: String? = nil
+        order: Int,
+        headerTitle: String
     ) {
         self.order = order
-        self.items = items
         self.headerTitle = headerTitle
     }
 }
