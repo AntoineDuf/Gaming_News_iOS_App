@@ -15,6 +15,7 @@ class GeneralFeedViewModel {
     private var thematiqueID = [Int?]()
     private var sources: [Sources] = []
     var articles: [RSSItem] = []
+    var tablesViewSection: [RSSArticleByDay] = []
     var selectedArticle: RSSItem?
     private var sourcesCollection: CollectionReference = Firestore.firestore().collection(L10n.sourcesDB)
     private var rssRequest = AlamofireNetworkRequest()
@@ -82,16 +83,73 @@ class GeneralFeedViewModel {
             }
         }
         myGroup.notify(queue: .main) {
-            self.articles = self.articles.sorted(by: {
-                $0.pubDate!.compare($1.pubDate!) == .orderedDescending
-            })
+//            self.articles = self.articles.sorted(by: {
+//                $0.pubDate!.compare($1.pubDate!) == .orderedDescending
+//            })
             var alreadyThere = Set<RSSItem>()
             self.articles = self.articles.compactMap { (rssItem) -> RSSItem? in
                 guard !alreadyThere.contains(rssItem) else { return nil }
                 alreadyThere.insert(rssItem)
                 return rssItem
             }
-            self.articlesHandler()
+            self.dispatchRssArticleByParutionDay()
+//            self.articlesHandler()
         }
+    }
+}
+
+extension GeneralFeedViewModel {
+
+    func dispatchRssArticleByParutionDay() {
+        var firstSection = RSSArticleByDay(order: 0, headerTitle: "Aujourd'hui")
+        var secondSection = RSSArticleByDay(order: 1, headerTitle: "Hier")
+        var thirdSection = RSSArticleByDay(order: 2, headerTitle: "Il y a deux jours")
+        var forthSection = RSSArticleByDay(order: 3, headerTitle: "Il y a trois jours")
+        var fifthSection = RSSArticleByDay(order: 4, headerTitle: "Il y a plus de trois jours")
+        for article in articles {
+            var calendar = NSCalendar.autoupdatingCurrent
+            calendar.timeZone = NSTimeZone.system
+            if let startDate = article.pubDate {
+                let components = calendar.dateComponents(
+                    [.day],
+                    from: startDate,
+                    to: NSDate() as Date
+                )
+                if let day = components.day {
+                    if day < 1 {
+                        firstSection.items.append(article)
+                    } else if day < 2 {
+                        secondSection.items.append(article)
+                    } else if day < 3 {
+                        thirdSection.items.append(article)
+                    } else if day < 4 {
+                        forthSection.items.append(article)
+                    } else {
+                        fifthSection.items.append(article)
+                    }
+                }
+            }
+        }
+        firstSection.items = firstSection.items.sorted(by: {
+            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
+        })
+        secondSection.items = secondSection.items.sorted(by: {
+            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
+        })
+        thirdSection.items = thirdSection.items.sorted(by: {
+            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
+        })
+        forthSection.items = forthSection.items.sorted(by: {
+            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
+        })
+        fifthSection.items = fifthSection.items.sorted(by: {
+            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
+        })
+        self.tablesViewSection.append(firstSection)
+        self.tablesViewSection.append(secondSection)
+        self.tablesViewSection.append(thirdSection)
+        self.tablesViewSection.append(forthSection)
+        self.tablesViewSection.append(fifthSection)
+        self.articlesHandler()
     }
 }
