@@ -15,6 +15,7 @@ class RSSFeedViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewModel()
+        configurePullToRefresh()
         DispatchQueue.main.async {
             self.viewModel.getRSSLinks()
         }
@@ -65,6 +66,23 @@ private extension RSSFeedViewController {
         viewModel.articlesHandler = { [weak self] in
             guard let me = self else { return }
                 me.tableView.reloadData()
+                me.refreshControl?.endRefreshing()
         }
+    }
+}
+
+private extension RSSFeedViewController {
+    func configurePullToRefresh() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(
+            self,
+            action: #selector(refreshArticles),
+            for: .valueChanged
+        )
+        self.refreshControl = refreshControl
+    }
+
+    @objc func refreshArticles() {
+        viewModel.getRSSLinks()
     }
 }
