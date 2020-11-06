@@ -41,6 +41,7 @@
 		8B8B8FDD250A9DE3000488A3 /* ConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B8FDC250A9DE3000488A3 /* ConfigurationViewModel.swift */; };
 		8B8B8FDF250AA12E000488A3 /* ConfigureTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B8FDE250AA12E000488A3 /* ConfigureTableCell.swift */; };
 		8B8B8FE1250AA98A000488A3 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8B8FE0250AA98A000488A3 /* AppRouter.swift */; };
+		8BB582B22555C0E10045D317 /* TableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB582B12555C0E00045D317 /* TableViewSection.swift */; };
 		8BD7FCB525261AD60015A601 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7FCB425261AD60015A601 /* TabBarViewModel.swift */; };
 		8BDB221B251CDDB400E568FA /* ConfigurationNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB221A251CDDB400E568FA /* ConfigurationNavigationViewController.swift */; };
 		8BDF12A924B78989003772A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BDF12A824B78989003772A4 /* GoogleService-Info.plist */; };
@@ -107,6 +108,7 @@
 		8B8B8FDC250A9DE3000488A3 /* ConfigurationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewModel.swift; sourceTree = "<group>"; };
 		8B8B8FDE250AA12E000488A3 /* ConfigureTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureTableCell.swift; sourceTree = "<group>"; };
 		8B8B8FE0250AA98A000488A3 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		8BB582B12555C0E00045D317 /* TableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSection.swift; sourceTree = "<group>"; };
 		8BD7FCB425261AD60015A601 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		8BDB221A251CDDB400E568FA /* ConfigurationNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationNavigationViewController.swift; sourceTree = "<group>"; };
 		8BDF12A824B78989003772A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				8B4534C42514106A006DE6A9 /* CurrentUser.swift */,
 				8B14A11B24D5ACBD00B49275 /* Sources.swift */,
 				8B43ECD724E6B807006FC79B /* Article.swift */,
+				8BB582B12555C0E00045D317 /* TableViewSection.swift */,
 				8BF7C84C24ADF1240080D9C6 /* Assets.xcassets */,
 				8BF7C84E24ADF1240080D9C6 /* LaunchScreen.storyboard */,
 				8BF7C85124ADF1240080D9C6 /* Info.plist */,
@@ -595,6 +598,7 @@
 				8B8B8FDB250A7782000488A3 /* ConfigurationViewController.swift in Sources */,
 				8B889FBC25418C8B00F62596 /* GeneralFeedTableViewController.swift in Sources */,
 				8B14A10A24D55C0B00B49275 /* RSSFeedViewModel.swift in Sources */,
+				8BB582B22555C0E10045D317 /* TableViewSection.swift in Sources */,
 				8B8B8FD32507C361000488A3 /* TabBarController.swift in Sources */,
 				8B889FC125419A0900F62596 /* RSSItem+Equatable.swift in Sources */,
 				8B8B8FE1250AA98A000488A3 /* AppRouter.swift in Sources */,
