@@ -17,7 +17,6 @@ class GeneralFeedCell: UITableViewCell {
     @IBOutlet private weak var sourceLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var articleImage: UIImageView!
-    @IBOutlet weak var imageStackView: UIView!
 
     func configureCell(article: RSSItem) {
         articleImage.layer.cornerRadius = 8
@@ -26,7 +25,6 @@ class GeneralFeedCell: UITableViewCell {
         displayNewsDelay(article: article)
         guard let image = article.mediaThumbnail else {
             articleImage.isHidden = true
-            imageStackView.isHidden = true
             return
         }
         articleImage.af.setImage(withURL: URL(string: image)!)
@@ -46,11 +44,11 @@ class GeneralFeedCell: UITableViewCell {
                 let day = components.day,
                 let minute = components.minute {
                 if day > 0 {
-                    timeLabel.text = "Il y a \(String(describing: day)) jour(s)"
+                    timeLabel.text = "\(String(describing: day)) j"
                 } else if minute < 60 && hour < 1 {
-                    timeLabel.text = "Il y a \(String(describing: minute)) minute(s)"
+                    timeLabel.text = "\(String(describing: minute)) m"
                     } else {
-                        timeLabel.text = "Il y a \(String(describing: hour)) heure(s) & \(String(describing: minute)) minute(s)"
+                        timeLabel.text = "\(String(hour)) h & \(String(minute)) m"
                 }
             }
         }
