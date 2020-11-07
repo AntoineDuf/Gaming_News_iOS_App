@@ -83,9 +83,6 @@ class GeneralFeedViewModel {
             }
         }
         myGroup.notify(queue: .main) {
-//            self.articles = self.articles.sorted(by: {
-//                $0.pubDate!.compare($1.pubDate!) == .orderedDescending
-//            })
             var alreadyThere = Set<RSSItem>()
             self.articles = self.articles.compactMap { (rssItem) -> RSSItem? in
                 guard !alreadyThere.contains(rssItem) else { return nil }
@@ -93,7 +90,6 @@ class GeneralFeedViewModel {
                 return rssItem
             }
             self.dispatchRssArticleByParutionDay()
-//            self.articlesHandler()
         }
     }
 }
@@ -106,6 +102,7 @@ extension GeneralFeedViewModel {
         var thirdSection = RSSArticleByDay(order: 2, headerTitle: "Il y a deux jours")
         var forthSection = RSSArticleByDay(order: 3, headerTitle: "Il y a trois jours")
         var fifthSection = RSSArticleByDay(order: 4, headerTitle: "Il y a plus de trois jours")
+
         for article in articles {
             var calendar = NSCalendar.autoupdatingCurrent
             calendar.timeZone = NSTimeZone.system
@@ -130,21 +127,11 @@ extension GeneralFeedViewModel {
                 }
             }
         }
-        firstSection.items = firstSection.items.sorted(by: {
-            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
-        })
-        secondSection.items = secondSection.items.sorted(by: {
-            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
-        })
-        thirdSection.items = thirdSection.items.sorted(by: {
-            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
-        })
-        forthSection.items = forthSection.items.sorted(by: {
-            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
-        })
-        fifthSection.items = fifthSection.items.sorted(by: {
-            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
-        })
+        firstSection.sortItems()
+        secondSection.sortItems()
+        thirdSection.sortItems()
+        forthSection.sortItems()
+        fifthSection.sortItems()
         self.tablesViewSection.append(firstSection)
         self.tablesViewSection.append(secondSection)
         self.tablesViewSection.append(thirdSection)
