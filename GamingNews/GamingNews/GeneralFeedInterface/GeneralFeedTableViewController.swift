@@ -61,7 +61,6 @@ extension GeneralFeedTableViewController {
             withIdentifier: "\(GeneralFeedCell.self)",
             for: indexPath
             ) as? GeneralFeedCell else { fatalError() }
-//        let article = viewModel.articles[indexPath.row]
         let article = viewModel.tablesViewSection[indexPath.section].items[indexPath.row]
         cell.configureCell(article: article)
         return cell
