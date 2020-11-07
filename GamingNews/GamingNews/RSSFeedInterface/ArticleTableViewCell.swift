@@ -16,7 +16,6 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet private weak var sourceLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var articleImage: UIImageView!
-    @IBOutlet weak var imageStackView: UIView!
 
     func configureCell(article: RSSItem, thematic: Thematic) {
         articleImage.layer.cornerRadius = 8
@@ -25,7 +24,6 @@ class ArticleTableViewCell: UITableViewCell {
         displayNewsDelay(article: article)
         guard let image = article.mediaThumbnail else {
             articleImage.isHidden = true
-            imageStackView.isHidden = true
             return
         }
         articleImage.af.setImage(withURL: URL(string: image)!)
