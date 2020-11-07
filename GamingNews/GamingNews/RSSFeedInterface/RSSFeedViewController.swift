@@ -32,8 +32,16 @@ extension RSSFeedViewController {
 }
 
 extension RSSFeedViewController {
+        override func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.tablesViewSection.count
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        viewModel.tablesViewSection[section].headerTitle
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.articles.count
+        viewModel.tablesViewSection[section].items.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,13 +49,13 @@ extension RSSFeedViewController {
             withIdentifier: "\(ArticleTableViewCell.self)",
             for: indexPath
             ) as? ArticleTableViewCell else { fatalError() }
-        let article = viewModel.articles[indexPath.row]
+        let article = viewModel.tablesViewSection[indexPath.section].items[indexPath.row]
         cell.configureCell(article: article, thematic: viewModel.thematic)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (view.frame.height / 6)
+        return 80
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
