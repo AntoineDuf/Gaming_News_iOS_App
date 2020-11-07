@@ -14,6 +14,7 @@ class RSSFeedViewModel {
     private var thematiqueID: Int
     var thematic: Thematic
     var articles: [RSSItem] = []
+    var tablesViewSection: [RSSArticleByDay] = []
     private var sources: [Sources] = []
     var selectedArticle: RSSItem?
     var articleHandler: () -> Void = {}
@@ -72,8 +73,55 @@ class RSSFeedViewModel {
                 self.articles = self.articles.sorted(by: {
                     $0.pubDate!.compare($1.pubDate!) == .orderedDescending
                 })
-                self.articlesHandler()
+                self.dispatchRssArticleByParutionDay()
             }
         }
+    }
+}
+
+extension RSSFeedViewModel {
+
+    func dispatchRssArticleByParutionDay() {
+        var firstSection = RSSArticleByDay(order: 0, headerTitle: "Aujourd'hui")
+        var secondSection = RSSArticleByDay(order: 1, headerTitle: "Hier")
+        var thirdSection = RSSArticleByDay(order: 2, headerTitle: "Il y a deux jours")
+        var forthSection = RSSArticleByDay(order: 3, headerTitle: "Il y a trois jours")
+        var fifthSection = RSSArticleByDay(order: 4, headerTitle: "Il y a plus de trois jours")
+
+        for article in articles {
+            var calendar = NSCalendar.autoupdatingCurrent
+            calendar.timeZone = NSTimeZone.system
+            if let startDate = article.pubDate {
+                let components = calendar.dateComponents(
+                    [.day],
+                    from: startDate,
+                    to: NSDate() as Date
+                )
+                if let day = components.day {
+                    if day < 1 {
+                        firstSection.items.append(article)
+                    } else if day < 2 {
+                        secondSection.items.append(article)
+                    } else if day < 3 {
+                        thirdSection.items.append(article)
+                    } else if day < 4 {
+                        forthSection.items.append(article)
+                    } else {
+                        fifthSection.items.append(article)
+                    }
+                }
+            }
+        }
+        firstSection.sortItems()
+        secondSection.sortItems()
+        thirdSection.sortItems()
+        forthSection.sortItems()
+        fifthSection.sortItems()
+        self.tablesViewSection.append(firstSection)
+        self.tablesViewSection.append(secondSection)
+        self.tablesViewSection.append(thirdSection)
+        self.tablesViewSection.append(forthSection)
+        self.tablesViewSection.append(fifthSection)
+        self.articlesHandler()
     }
 }
