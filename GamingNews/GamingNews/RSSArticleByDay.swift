@@ -23,3 +23,14 @@ struct RSSArticleByDay {
         self.headerTitle = headerTitle
     }
 }
+
+extension RSSArticleByDay {
+    public mutating func sortItems() {
+        let sortedItems = items.sorted { (itemOne, itemTwo) -> Bool in
+            guard let itemOnePubDate = itemOne.pubDate,
+                  let itemTwoPubDate = itemTwo.pubDate else { return false }
+            return itemOnePubDate.compare(itemTwoPubDate) == .orderedDescending
+        }
+        items = sortedItems
+    }
+}
