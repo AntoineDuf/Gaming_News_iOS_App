@@ -22,11 +22,3 @@ extension Array where Element: Hashable {
         return Array(Set(self))
     }
 }
-
-extension RSSArticleByDay {
-    public mutating func sortItems() {
-        return self.items = self.items.sorted(by: {
-            $0.pubDate!.compare($1.pubDate!) == .orderedDescending
-        })
-    }
-}
